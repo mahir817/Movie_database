@@ -1,0 +1,90 @@
+/* style2.css */
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background-color: #141414;
+    color: white;
+}
+
+.header {
+    background-color: #712f97;
+    padding: 20px;
+    text-align: center;
+    font-size: 2em;
+    color: #f1f1f1;
+    flex: 0 1 100px;
+    /* Header takes up 100px height */
+}
+
+.content {
+    padding: 20px;
+    flex: 1 1 auto;
+    /* Content takes up the remaining space */
+    overflow-y: auto;
+    /* Allow scrolling if content overflows */
+}
+
+.content h3 {
+    color: #20b8c9;
+}
+
+.welcome-message {
+    margin-top: 20px;
+    font-size: 1.5em;
+}
+
+.movie-categories {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 30px;
+    flex-wrap: wrap;
+}
+
+.movie-category {
+    background-color: #222;
+    padding: 15px;
+    border-radius: 10px;
+    text-align: center;
+    width: 200px;
+    margin-bottom: 20px;
+    transition: all 0.3s ease;
+}
+
+.movie-category:hover {
+    background-color: #712f97;
+    cursor: pointer;
+}
+
+.logout-btn {
+    color: red;
+    font-size: 1.2em;
+    text-decoration: none;
+    border: 1px solid red;
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+
+.logout-btn:hover {
+    background-color: red;
+    color: white;
+}
+
+/* Ensure the page is fully responsive */
+@media (max-width: 768px) {
+    .movie-category {
+        width: 45%;
+        /* Make categories take up 45% on smaller screens */
+    }
+}
+
+@media (max-width: 480px) {
+    .movie-category {
+        width: 100%;
+        /* Full width on very small screens */
+    }
+}
