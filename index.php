@@ -21,7 +21,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Cinephile - Home</title>
-  <link rel="stylesheet" href="style2.css"> <!-- Link to style2.css -->
+  <link rel="stylesheet" href="style2.css"> 
 </head>
 <body>
 
@@ -32,6 +32,7 @@
       <li><a href="index.php">Home</a></li>
       <li><a href="watchlist.php">Watchlist</a></li>
       <li><a href="add_movie.php">Add Movie</a></li>
+      <li><a href="view_movies.php">View Movies</a></li>
       <li><a href="contact.php">Contact</a></li>
       <li><a href="index.php?logout=1" class="logout-link">Logout</a></li>
     </ul>
@@ -63,21 +64,30 @@
     </div>
 
     <div class="movie-categories">
+      <!-- Add links to each category with genre parameters -->
       <div class="movie-category">
-        <h3>Action</h3>
-        <p>Explore action-packed movies</p>
+        <a href="view_movies.php?genre=Action">
+          <h3>Action</h3>
+        </a>
+        <p>Bond! James Bond</p>
       </div>
       <div class="movie-category">
-        <h3>Comedy</h3>
-        <p>Laughter guaranteed with these movies</p>
+        <a href="view_movies.php?genre=Comedy">
+          <h3>Comedy</h3>
+        </a>
+        <p>Can I interest you in a sarcastic comment?</p>
       </div>
       <div class="movie-category">
-        <h3>Drama</h3>
-        <p>Experience emotional stories</p>
+        <a href="view_movies.php?genre=Drama">
+          <h3>Drama</h3>
+        </a>
+        <p>The first rule of fight club is ...</p>
       </div>
       <div class="movie-category">
-        <h3>Romance</h3>
-        <p>Fall in love with these movies</p>
+        <a href="view_movies.php?genre=Romance">
+          <h3>Romance</h3>
+        </a>
+        <p>I'd rather die tomorrow than live a hundred years without knowing you.</p>
       </div>
     </div>
   <?php endif ?>
