@@ -1,17 +1,20 @@
 <?php 
   session_start(); 
 
+  // Redirect to login if not logged in
   if (!isset($_SESSION['username'])) {
-    $_SESSION['msg'] = "You must log in first";
     header('location: login.php');
+    exit();
   }
+
+  // Handle logout action
   if (isset($_GET['logout'])) {
     session_destroy();
     unset($_SESSION['username']);
     header("location: login.php");
+    exit();
   }
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -24,6 +27,19 @@
 
 <div class="header">
   <h2>Cinephile - Your Movie Hub</h2>
+  <div class="navbar">
+    <ul>
+      <li><a href="index.php">Home</a></li>
+      <li><a href="watchlist.php">Watchlist</a></li>
+      <li><a href="add_movie.php">Add Movie</a></li>
+      <li><a href="contact.php">Contact</a></li>
+      <li><a href="index.php?logout=1" class="logout-link">Logout</a></li>
+    </ul>
+    <form class="search-form" method="get" action="search.php">
+      <input type="text" name="query" placeholder="Search movies...">
+      <button type="submit">Search</button>
+    </form>
+  </div>
 </div>
 
 <div class="content">
@@ -40,7 +56,7 @@
   <?php endif ?>
 
   <!-- Logged-in user information -->
-  <?php  if (isset($_SESSION['username'])) : ?>
+  <?php if (isset($_SESSION['username'])) : ?>
     <div class="welcome-message">
       <p>Welcome, <strong><?php echo $_SESSION['username']; ?></strong></p>
       <p>Explore movies, TV shows, and more on Cinephile!</p>
@@ -64,8 +80,6 @@
         <p>Fall in love with these movies</p>
       </div>
     </div>
-
-    <p><a href="index.php?logout='1'" class="logout-btn">Logout</a></p>
   <?php endif ?>
 </div>
 
