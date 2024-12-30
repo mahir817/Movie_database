@@ -71,36 +71,41 @@ $result = $conn->query($sql);
     </form>
 
     <!-- Movie List Table -->
-    <table>
-        <thead>
-            <tr>
-                <th>Title</th>
-                <th>Genre</th>
-                <th>Release Year</th>
-                <th>Rating</th>
-                <th>Runtime</th>
-            </tr>
-        </thead>
-        <tbody>
-            <?php if ($result->num_rows > 0): ?>
-                <?php while ($row = $result->fetch_assoc()): ?>
-                    <tr>
-                        <td><?php echo htmlspecialchars($row['title']); ?></td>
-                        <td><?php echo htmlspecialchars($row['genre']); ?></td>
-                        <td><?php echo htmlspecialchars($row['release_year']); ?></td>
-                        <td><?php echo htmlspecialchars($row['rating']); ?></td>
-                        <td><?php echo htmlspecialchars($row['runtime']); ?> mins</td>
-                    </tr>
-                <?php endwhile; ?>
-            <?php else: ?>
+<table>
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Genre</th>
+            <th>Release Year</th>
+            <th>Rating</th>
+            <th>Runtime</th>
+            <th>Actions</th> <!-- New column for actions -->
+        </tr>
+    </thead>
+    <tbody>
+        <?php if ($result->num_rows > 0): ?>
+            <?php while ($row = $result->fetch_assoc()): ?>
                 <tr>
-                    <td colspan="5">No movies found.</td>
+                    <td><?php echo htmlspecialchars($row['title']); ?></td>
+                    <td><?php echo htmlspecialchars($row['genre']); ?></td>
+                    <td><?php echo htmlspecialchars($row['release_year']); ?></td>
+                    <td><?php echo htmlspecialchars($row['rating']); ?></td>
+                    <td><?php echo htmlspecialchars($row['runtime']); ?> mins</td>
+                    <td>
+                        <!-- Action buttons -->
+                        <a href="edit_movie.php?id=<?php echo $row['id']; ?>" class="edit-button">Edit</a>
+                        <a href="delete_movie.php?id=<?php echo $row['id']; ?>" class="delete-button" 
+                           onclick="return confirm('Are you sure you want to delete this movie?');">Delete</a>
+                    </td>
                 </tr>
-            <?php endif; ?>
-        </tbody>
-    </table>
-</div>
-</body>
-</html>
+            <?php endwhile; ?>
+        <?php else: ?>
+            <tr>
+                <td colspan="6">No movies found.</td>
+            </tr>
+        <?php endif; ?>
+    </tbody>
+</table>
+
 
 <?php $conn->close(); ?>
