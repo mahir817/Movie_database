@@ -55,7 +55,7 @@ $fixed_genres = [
             <li><a href="add_movie.php">Add Movie</a></li>
             <li><a href="view_movies.php">View Movies</a></li>
             <li><a href="genres.php" class="active">Genres</a></li>
-            <li><a href="contact.php">Contact</a></li>
+            
             <li><a href="index.php?logout=1" class="logout-link">Logout</a></li>
         </ul>
     </div>
