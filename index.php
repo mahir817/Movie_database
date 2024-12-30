@@ -28,18 +28,18 @@
 <div class="header">
   <h2>Cinephile - Your Movie Hub</h2>
   <div class="navbar">
-    <ul>
-      <li><a href="index.php">Home</a></li>
-      <li><a href="watchlist.php">Watchlist</a></li>
-      <li><a href="add_movie.php">Add Movie</a></li>
-      <li><a href="view_movies.php">View Movies</a></li>
-      <li><a href="contact.php">Contact</a></li>
-      <li><a href="index.php?logout=1" class="logout-link">Logout</a></li>
-    </ul>
-    <form class="search-form" method="get" action="search.php">
-      <input type="text" name="query" placeholder="Search movies...">
-      <button type="submit">Search</button>
-    </form>
+  <ul>
+    <li><a href="index.php">Home</a></li>
+    <li><a href="watchlist.php">Watchlist</a></li>
+    <li><a href="add_movie.php">Add Movie</a></li>
+    <li><a href="view_movies.php">View Movies</a></li>
+    <li><a href="genres.php">Genres</a></li>
+    <li><a href="index.php?logout=1" class="logout-link">Logout</a></li>
+  </ul>
+  <form class="search-form" method="get" action="search.php">
+    <input type="text" name="query" placeholder="Search movies...">
+    <button type="submit">Search</button>
+  </form>
   </div>
 </div>
 
