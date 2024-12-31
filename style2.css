@@ -357,3 +357,28 @@ body {
     background-color: #D9EAFD;
     border: none;
 }
+form button {
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+form button:hover {
+    background-color: #0056b3;
+}
+
+
+
+.movie-card {
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    padding: 15px;
+    width: 200px;
+}
+
+.movie-card h3 {
+    margin-top: 0;
+}

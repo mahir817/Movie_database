@@ -55,7 +55,7 @@
     }
 
     .movie-card {
-      background-color: #9aa6b2;
+      background-color: #BCCCDC;
       border: 1px solid #333;
       border-radius: 5px;
       overflow: hidden;
