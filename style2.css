@@ -144,22 +144,7 @@ body {
 }
 
 /* Logout button */
-.logout-btn {
-    display: inline-block;
-    margin-top: 20px;
-    padding: 10px 20px;
-    background-color: red;
-    color: white;
-    text-decoration: none;
-    border-radius: 5px;
-    font-weight: bold;
-    transition: background-color 0.3s;
-    text-align: center;
-}
 
-.logout-btn:hover {
-    background-color: rgb(179, 47, 47);
-}
 
 /* Sort form styles */
 .sort-form {

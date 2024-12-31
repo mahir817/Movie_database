@@ -4,9 +4,87 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Add Movie</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style2.css">
+  <style>
+    /* Styling for the form container */
+    form {
+      max-width: 1500px;  /* Increased width */
+      margin: 0 auto;
+      background-color: white;
+      padding: 50px;  /* Increased padding */
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Styling for input fields and textarea */
+    input, textarea {
+      width: 100%;
+      padding: 12px;  /* Increased padding for better appearance */
+      margin-bottom: 20px;  /* Increased space between inputs */
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      font-size: 16px;
+    }
+
+    /* Removing the appearance of numbers */
+    input[type="number"] {
+      -moz-appearance: textfield;
+    }
+
+    /* Styling for placeholders */
+    input::placeholder, textarea::placeholder {
+      font-size: 18px;
+      color: #888;
+    }
+
+    /* Focus state for inputs and textarea */
+    input:focus, textarea:focus {
+      border-color: #5b9bd5;
+      outline: none;
+    }
+
+    /* Styling for the submit button */
+    button {
+      width: 100%;
+      padding: 12px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      font-size: 18px;
+      cursor: pointer;
+    }
+
+    /* Hover effect for the button */
+    button:hover {
+      background-color: #45a049;
+    }
+
+    /* Styling for logout link */
+    .logout-link {
+      font-size: 16px;
+      color: white;
+    }
+
+    .logout-link:hover {
+      text-decoration: underline;
+    }
+  </style>
 </head>
 <body>
+  <div class="header">
+    <h2>Add New Movies</h2>
+    <div class="navbar">
+      <ul>
+        <li><a href="index.php">Home</a></li>
+        <li><a href="watchlist.php">Watchlist</a></li>
+        <li><a href="add_movie.php">Add Movie</a></li>
+        <li><a href="view_movies.php">View Movies</a></li>
+        <li><a href="genres.php">Genres</a></li>
+        <li><a href="index.php?logout=1" class="logout-link">Logout</a></li>
+      </ul>
+    </div>
+  </div>
 
   <h2>Add Movie</h2>
   <form action="add_movie.php" method="POST">
@@ -19,10 +97,8 @@
     <textarea name="description" placeholder="Movie Description" required></textarea><br>
     <button type="submit">Add Movie</button>
   </form>
-
 </body>
 </html>
-
 
 
 <?php

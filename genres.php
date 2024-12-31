@@ -25,8 +25,12 @@ $fixed_genres = [
     "Horror",
     "Fantasy",
     "Crime",
-    "Musical",
-    "Mystery"
+    "Music",
+    "Sports",
+    "Biography",
+    "Animation",
+    "Mystery",
+    "Sci-Fi"
 ];
 ?>
 <!DOCTYPE html>

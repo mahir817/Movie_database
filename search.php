@@ -52,6 +52,47 @@ $result = $conn->query($sql);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Search Movies</title>
     <link rel="stylesheet" href="style2.css">
+    <style>
+        .content {
+            padding: 20px;
+        }
+
+        .movie-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 20px;
+        }
+
+        .movie-card {
+            background-color: #9aa6b2;
+            border: 1px solid #333;
+            border-radius: 5px;
+            overflow: hidden;
+            text-align: center;
+            padding: 10px;
+        }
+
+        .movie-card img {
+            width: 100%;
+            height: auto;
+            border-radius: 5px;
+        }
+
+        .movie-card h3 {
+            margin: 10px 0;
+            font-size: 1.2em;
+        }
+
+        .movie-card p {
+            margin: 5px 0;
+            font-size: 0.9em;
+        }
+
+        .movie-card a {
+            text-decoration: none;
+            color: #e8ebed;
+        }
+    </style>
 </head>
 <body>
 <div class="header">
@@ -63,7 +104,6 @@ $result = $conn->query($sql);
             <li><a href="add_movie.php">Add Movie</a></li>
             <li><a href="view_movies.php">View Movies</a></li>
             <li><a href="genres.php">Genres</a></li>
-            <li><a href="contact.php">Contact</a></li>
             <li><a href="index.php?logout=1" class="logout-link">Logout</a></li>
         </ul>
     </div>
@@ -100,33 +140,22 @@ $result = $conn->query($sql);
     </form>
 
     <h3>Search Results</h3>
-    <?php if ($result->num_rows > 0): ?>
-        <table>
-            <thead>
-                <tr>
-                    <th>Title</th>
-                    <th>Genre</th>
-                    <th>Director</th>
-                    <th>Release Year</th>
-                    <th>Rating</th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php while ($row = $result->fetch_assoc()): ?>
-                    <tr>
-                        <td><?php echo htmlspecialchars($row['title']); ?></td>
-                        <td><?php echo htmlspecialchars($row['genre']); ?></td>
-                        <td><?php echo htmlspecialchars($row['director']); ?></td>
-                        <td><?php echo htmlspecialchars($row['release_year']); ?></td>
-                        <td><?php echo htmlspecialchars($row['rating']); ?></td>
-                    </tr>
-                <?php endwhile; ?>
-            </tbody>
-        </table>
-    <?php else: ?>
-        <p>No results found.</p>
-    <?php endif; ?>
+    <div class="movie-grid">
+        <?php if ($result->num_rows > 0): ?>
+            <?php while ($row = $result->fetch_assoc()): ?>
+                <div class="movie-card">
+                    <h3><?php echo htmlspecialchars($row['title']); ?></h3>
+                    <p>Genre: <?php echo htmlspecialchars($row['genre']); ?></p>
+                    <p>Release Year: <?php echo htmlspecialchars($row['release_year']); ?></p>
+                    <p>Rating: <?php echo htmlspecialchars($row['rating']); ?> ★</p>
+                    <p><a href="movie_details.php?id=<?php echo $row['id']; ?>">View Details</a></p>
+                </div>
+            <?php endwhile; ?>
+        <?php else: ?>
+            <p>No results found.</p>
+        <?php endif; ?>
+    </div>
 </div>
+<?php $conn->close(); ?>
 </body>
 </html>
-<?php $conn->close(); ?>

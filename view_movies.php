@@ -40,10 +40,62 @@ $result = $conn->query($sql);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>View Movies</title>
     <link rel="stylesheet" href="style2.css">
+    <style>
+       
+        .content {
+            padding: 20px;
+        }
+
+        .movie-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 20px;
+        }
+
+        .movie-card {
+            background-color: #9aa6b2;
+            border: 1px solid #333;
+            border-radius: 5px;
+            overflow: hidden;
+            text-align: center;
+            padding: 10px;
+        }
+
+        .movie-card img {
+            width: 100%;
+            height: auto;
+            border-radius: 5px;
+        }
+
+        .movie-card h3 {
+            margin: 10px 0;
+            font-size: 1.2em;
+        }
+
+        .movie-card p {
+            margin: 5px 0;
+            font-size: 0.9em;
+        }
+
+        .movie-card a {
+            text-decoration: none;
+            color: #e8ebed;
+        }
+    </style>
 </head>
 <body>
 <div class="header">
     <h2>View Movies</h2>
+    <div class="navbar">
+        <ul>
+            <li><a href="index.php">Home</a></li>
+            <li><a href="watchlist.php">Watchlist</a></li>
+            <li><a href="add_movie.php">Add Movie</a></li>
+            <li><a href="view_movies.php">View Movies</a></li>
+            <li><a href="genres.php">Genres</a></li>
+            <li><a href="index.php?logout=1" class="logout-link">Logout</a></li>
+        </ul>
+    </div>
 </div>
 <div class="content">
     <!-- Genre display -->
@@ -53,59 +105,22 @@ $result = $conn->query($sql);
         <h3>All Movies</h3>
     <?php endif; ?>
 
-    <!-- Sort Form -->
-    <form method="get" action="view_movies.php" class="sort-form">
-        <label for="sort_by">Sort by:</label>
-        <select name="sort_by" id="sort_by">
-            <option value="title" <?php echo ($sort_by == 'title') ? 'selected' : ''; ?>>Title</option>
-            <option value="genre" <?php echo ($sort_by == 'genre') ? 'selected' : ''; ?>>Genre</option>
-            <option value="release_year" <?php echo ($sort_by == 'release_year') ? 'selected' : ''; ?>>Release Year</option>
-            <option value="rating" <?php echo ($sort_by == 'rating') ? 'selected' : ''; ?>>Rating</option>
-        </select>
-        <label for="order">Order:</label>
-        <select name="order" id="order">
-            <option value="ASC" <?php echo ($order == 'ASC') ? 'selected' : ''; ?>>Ascending</option>
-            <option value="DESC" <?php echo ($order == 'DESC') ? 'selected' : ''; ?>>Descending</option>
-        </select>
-        <button type="submit">Sort</button>
-    </form>
-
-    <!-- Movie List Table -->
-<table>
-    <thead>
-        <tr>
-            <th>Title</th>
-            <th>Genre</th>
-            <th>Release Year</th>
-            <th>Rating</th>
-            <th>Runtime</th>
-            <th>Actions</th> <!-- New column for actions -->
-        </tr>
-    </thead>
-    <tbody>
+    <div class="movie-grid">
         <?php if ($result->num_rows > 0): ?>
             <?php while ($row = $result->fetch_assoc()): ?>
-                <tr>
-                    <td><?php echo htmlspecialchars($row['title']); ?></td>
-                    <td><?php echo htmlspecialchars($row['genre']); ?></td>
-                    <td><?php echo htmlspecialchars($row['release_year']); ?></td>
-                    <td><?php echo htmlspecialchars($row['rating']); ?></td>
-                    <td><?php echo htmlspecialchars($row['runtime']); ?> mins</td>
-                    <td>
-                        <!-- Action buttons -->
-                        <a href="edit_movie.php?id=<?php echo $row['id']; ?>" class="edit-button">Edit</a>
-                        <a href="delete_movie.php?id=<?php echo $row['id']; ?>" class="delete-button" 
-                           onclick="return confirm('Are you sure you want to delete this movie?');">Delete</a>
-                    </td>
-                </tr>
+                <div class="movie-card">
+                    <h3><?php echo htmlspecialchars($row['title']); ?></h3>
+                    <p>Genre: <?php echo htmlspecialchars($row['genre']); ?></p>
+                    <p>Release Year: <?php echo htmlspecialchars($row['release_year']); ?></p>
+                    <p>Rating: <?php echo htmlspecialchars($row['rating']); ?></p>
+                    <p><a href="movie_details.php?id=<?php echo $row['id']; ?>">View Details</a></p>
+                </div>
             <?php endwhile; ?>
         <?php else: ?>
-            <tr>
-                <td colspan="6">No movies found.</td>
-            </tr>
+            <p>No movies found.</p>
         <?php endif; ?>
-    </tbody>
-</table>
-
-
+    </div>
+</div>
 <?php $conn->close(); ?>
+</body>
+</html>
