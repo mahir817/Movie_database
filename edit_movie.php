@@ -62,22 +62,22 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <div class="content">
         <form method="post">
             <label for="title">Title:</label>
-            <input type="text" name="title" value="<?php echo htmlspecialchars($movie['title']); ?>" required>
+            <br><input type="text" name="title" value="<?php echo htmlspecialchars($movie['title']); ?>" required>
 
-            <label for="description">Description:</label>
-            <textarea name="description" rows="4" required><?php echo htmlspecialchars($movie['description']); ?></textarea>
+            <br><label for="description">Description:</label>
+            <br><textarea name="description" rows="4" required><?php echo htmlspecialchars($movie['description']); ?></textarea>
 
-            <label for="genre">Genre:</label>
-            <input type="text" name="genre" value="<?php echo htmlspecialchars($movie['genre']); ?>" required>
+            <br><label for="genre">Genre:</label>
+            <br><input type="text" name="genre" value="<?php echo htmlspecialchars($movie['genre']); ?>" required>
 
-            <label for="release_year">Release Year:</label>
-            <input type="number" name="release_year" value="<?php echo htmlspecialchars($movie['release_year']); ?>" required>
+            <br><label for="release_year">Release Year:</label>
+            <br><input type="number" name="release_year" value="<?php echo htmlspecialchars($movie['release_year']); ?>" required>
 
-            <label for="rating">Rating:</label>
-            <input type="text" name="rating" value="<?php echo htmlspecialchars($movie['rating']); ?>" required>
+            <br><label for="rating">Rating:</label>
+            <br><input type="text" name="rating" value="<?php echo htmlspecialchars($movie['rating']); ?>" required>
 
-            <label for="runtime">Runtime (minutes):</label>
-            <input type="number" name="runtime" value="<?php echo htmlspecialchars($movie['runtime']); ?>" required>
+            <br><label for="runtime">Runtime (minutes):</label>
+            <br><input type="number" name="runtime" value="<?php echo htmlspecialchars($movie['runtime']); ?>" required>
 
             <button type="submit">Save Changes</button>
         </form>

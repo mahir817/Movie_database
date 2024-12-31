@@ -14,6 +14,22 @@
     header("location: login.php");
     exit();
   }
+
+  // Database connection
+  $servername = "localhost";
+  $username = "root";
+  $password = "";
+  $dbname = "project";
+
+  $conn = new mysqli($servername, $username, $password, $dbname);
+
+  if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+  }
+
+  // Fetch the 4 most recently added movies
+  $recent_movies_sql = "SELECT * FROM movies ORDER BY id DESC LIMIT 5";
+  $recent_movies_result = $conn->query($recent_movies_sql);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -22,6 +38,50 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Cinephile - Home</title>
   <link rel="stylesheet" href="style2.css"> 
+  <style>
+    .recent-movies-section {
+      padding: 20px;
+    }
+
+    .recent-movies-header {
+      margin-bottom: 15px;
+      text-align: center;
+    }
+
+    .movie-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 20px;
+    }
+
+    .movie-card {
+      background-color: #9aa6b2;
+      border: 1px solid #333;
+      border-radius: 5px;
+      overflow: hidden;
+      text-align: center;
+      padding: 10px;
+    }
+
+    .movie-card h3 {
+      margin: 10px 0;
+      font-size: 1.2em;
+    }
+
+    .movie-card p {
+      margin: 5px 0;
+      font-size: 0.9em;
+    }
+
+    .movie-card a {
+      text-decoration: none;
+      color: #e8ebed;
+    }
+
+    .movie-card a:hover {
+      text-decoration: underline;
+    }
+  </style>
 </head>
 <body>
 
@@ -90,8 +150,29 @@
         <p>I'd rather die tomorrow than live a hundred years without knowing you.</p>
       </div>
     </div>
+
+    <!-- Recently Added Movies -->
+    <div class="recent-movies-section">
+      <h2 class="recent-movies-header">Recently Added Movies</h2>
+      <div class="movie-grid">
+        <?php if ($recent_movies_result->num_rows > 0): ?>
+          <?php while ($movie = $recent_movies_result->fetch_assoc()): ?>
+            <div class="movie-card">
+              <h3><?php echo htmlspecialchars($movie['title']); ?></h3>
+              <p>Genre: <?php echo htmlspecialchars($movie['genre']); ?></p>
+              <p>Release Year: <?php echo htmlspecialchars($movie['release_year']); ?></p>
+              <p>Rating: <?php echo htmlspecialchars($movie['rating']); ?></p>
+              <p><a href="movie_details.php?id=<?php echo $movie['id']; ?>">View Details</a></p>
+            </div>
+          <?php endwhile; ?>
+        <?php else: ?>
+          <p>No recently added movies.</p>
+        <?php endif; ?>
+      </div>
+    </div>
   <?php endif ?>
 </div>
 
 </body>
 </html>
+<?php $conn->close(); ?>

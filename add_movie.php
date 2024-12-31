@@ -8,10 +8,10 @@
   <style>
     /* Styling for the form container */
     form {
-      max-width: 1500px;  /* Increased width */
+      max-width: 1500px;  
       margin: 0 auto;
       background-color: white;
-      padding: 50px;  /* Increased padding */
+      padding: 50px;  
       border-radius: 8px;
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     }
@@ -19,8 +19,8 @@
     /* Styling for input fields and textarea */
     input, textarea {
       width: 100%;
-      padding: 12px;  /* Increased padding for better appearance */
-      margin-bottom: 20px;  /* Increased space between inputs */
+      padding: 12px;  
+      margin-bottom: 20px;  
       border: 1px solid #ccc;
       border-radius: 4px;
       font-size: 16px;
@@ -104,9 +104,9 @@
 <?php
 // Database connection (replace with your actual database credentials)
 $servername = "localhost";
-$username = "root"; // or your database username
-$password = ""; // or your database password
-$dbname = "project"; // your database name
+$username = "root"; 
+$password = ""; 
+$dbname = "project";
 
 // Create connection
 $conn = new mysqli($servername, $username, $password, $dbname);
